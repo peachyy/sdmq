@@ -1,0 +1,67 @@
+
+sdmq:
+    logpath: ../logs
+    registry:
+      enable: true
+      namespace: io-sdmq
+      serverList: 127.0.0.1:2181
+    reocketmq:
+      namesrvAddr: 127.0.0.1:9876
+      filterSourceRoot: /home/
+    rqueue:
+     #是否已集群模式运行 会涉及到分布式锁竞争的情况 默认为false
+      cluster: false
+      name: dq
+      bucketSize: 4
+
+spring:
+    jmx:
+      enabled: true
+    application:
+        name: 'sdmq'
+        version: '1.0'
+    datasource:
+        url: jdbc:mysql://127.0.0.1:3306/delay_queue?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+        driverClassName: com.mysql.jdbc.Driver
+        username: jikexiuuser
+        password: jikexiupwd
+        type: com.alibaba.druid.pool.DruidDataSource
+        filters: stat
+        maxActive: 30
+        initialSize: 3
+        maxWait: 60000
+        maxIdle: 30
+        minIdle: 3
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+    redis:
+        host: 127.0.0.1
+        password: 123
+        port: 6379
+        timeout: 60000
+        database: 3
+#        cluster:
+#          nodes:
+#            - 127.0.0.1:30001
+#            - 127.0.0.1:30002
+#            - 127.0.0.1:30003
+#            - 127.0.0.1:30004
+#            - 127.0.0.1:30005
+#            - 127.0.0.1:30006
+        pool:
+          max-idle: 300
+          min-idle: 10
+          max-active: 200
+          max-wait: 10000
+
+server:
+  port: 6355
+
+logging:
+     config: file:${soft.home}/config/logback.xml
