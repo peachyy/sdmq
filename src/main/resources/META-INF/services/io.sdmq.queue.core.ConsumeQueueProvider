@@ -1,0 +1,2 @@
+io.sdmq.queue.cqp.JmsConsumeQueue
+io.sdmq.queue.cqp.ConsoleConsumeQueue
