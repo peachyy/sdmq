@@ -6,7 +6,7 @@ is a simple delay message queue， based on redis and kotlin
 
 # 运行模式
 
-* 支持 master,slave （HA）需要配置`jikexiu.registry.serverList` zk集群地址列表
+* 支持 master,slave （HA）需要配置`sdmq.registry.serverList` zk集群地址列表
 * 支持 cluster 会涉及到分布式锁竞争 效果不是很明显  分布式锁采用`redis`的 `setNx`实现
 * StandAlone 
 
@@ -83,7 +83,7 @@ is a simple delay message queue， based on redis and kotlin
 
 ##### 消息体中消息与`rocketmq`消息字段对应关系
 
-DelayQueue        | rocketMQ | 备注|
+sdmq        | rocketMQ | 备注|
 ---               | ---      |---          
 topic    | topic    |     |         
 subtopic | subtopic |      |    
