@@ -3,7 +3,7 @@ is a simple delay message queue， based on redis and kotlin
 
 设计 <a href="https://www.cnblogs.com/peachyy/p/7398430.html" target="_blank">https://www.cnblogs.com/peachyy/p/7398430.html</a>
 
-`延时队列` 
+`一个简单、稳定、可扩展的延迟消息队列` 
 
 # 运行模式
 
