@@ -1,0 +1,54 @@
+{
+  "groups": [
+    {
+      "sourceType": "io.sdmq.common.autoconfigure.RegistryProperties",
+      "name": "sdmq.registry",
+      "type": "io.sdmq.common.autoconfigure.RegistryProperties",
+      "description": "sdmq.registry 配置项"
+    },
+    {
+      "sourceType": "io.sdmq.queue.redis.support.RedisQueueProperties",
+      "name": "sdmq.rqueue",
+      "type": "io.sdmq.queue.redis.support.RedisQueueProperties",
+      "description": "sdmq.rqueue 配置项"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "io.sdmq.common.autoconfigure.RegistryProperties",
+      "name": "sdmq.registry.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用注册中心模式"
+    },
+    {
+      "sourceType": "io.sdmq.common.autoconfigure.RegistryProperties",
+      "name": "sdmq.registry.namespace",
+      "type": "java.lang.String",
+      "description": "namespace"
+    },
+    {
+      "sourceType": "io.sdmq.common.autoconfigure.RegistryProperties",
+      "name": "sdmq.registry.serverList",
+      "type": "java.lang.String",
+      "description": "zk serever list"
+    },
+    {
+      "sourceType": "io.sdmq.queue.redis.support.RedisQueueProperties",
+      "name": "sdmq.rqueue.cluster",
+      "type": "java.lang.Boolean",
+      "description": "是否启用集群模式"
+    },
+    {
+      "sourceType": "io.sdmq.queue.redis.support.RedisQueueProperties",
+      "name": "sdmq.rqueue.name",
+      "type": "java.lang.String",
+      "description": "队列名称"
+    },
+    {
+      "sourceType": "io.sdmq.queue.redis.support.RedisQueueProperties",
+      "name": "sdmq.rqueue.bucketSize",
+      "type": "java.lang.Integer",
+      "description": "分区bucket大小"
+    }
+  ]
+}
