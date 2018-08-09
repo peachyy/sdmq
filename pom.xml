@@ -4,9 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.sdmq</groupId>
-    <artifactId>sdmq-core</artifactId>
+    <artifactId>sdmq-all</artifactId>
     <version>0.0.1</version>
-    <packaging>jar</packaging>
+    <modules>
+        <module>smdq-core</module>
+        <module>distribution</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <name>sdmq</name>
     <url>https://github.com/peachyy/sdmq.git</url>
