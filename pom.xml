@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.sdmq</groupId>
-    <artifactId>sdmq-all</artifactId>
+    <artifactId>sdmq</artifactId>
     <version>0.0.1</version>
     <modules>
         <module>smdq-core</module>
