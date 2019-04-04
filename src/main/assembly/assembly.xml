@@ -17,7 +17,7 @@
 
         <fileSet>
             <directory>${project.build.directory}/classes/config</directory>
-            <outputDirectory>conf</outputDirectory>
+            <outputDirectory>config</outputDirectory>
             <fileMode>0644</fileMode>
         </fileSet>
     </fileSets>
