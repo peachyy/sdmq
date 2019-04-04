@@ -2,7 +2,7 @@
 sdmq:
     logpath: ../logs
     registry:
-      enable: true
+      enable: false
       namespace: io-sdmq
       serverList: 127.0.0.1:2181
     reocketmq:
@@ -21,10 +21,10 @@ spring:
         name: 'sdmq'
         version: '1.0'
     datasource:
-        url: jdbc:mysql://127.0.0.1:3306/delay_queue?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+        url: jdbc:mysql://rm-wz9u6s944f3p2am001o.mysql.rds.aliyuncs.com/changan_cos2?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
         driverClassName: com.mysql.jdbc.Driver
-        username: root
-        password: root
+        username: changan_cos1
+        password: chan#gan_cos1_Online
         type: com.alibaba.druid.pool.DruidDataSource
         filters: stat
         maxActive: 30
@@ -41,11 +41,11 @@ spring:
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
     redis:
-        host: 127.0.0.1
-        password: 123
-        port: 6379
+        host: localhost
+        password: aJjbuDRYw4
+        port: 6380
         timeout: 60000
-        database: 3
+        database: 11
 #        cluster:
 #          nodes:
 #            - 127.0.0.1:30001

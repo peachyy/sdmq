@@ -12,8 +12,7 @@
             <!--
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{40}  %L - %msg%n</pattern>
             -->
-            <pattern>%clr(%d{HH:mm:ss.SSS}){faint} %clr([%thread]){faint}
-                %clr(%-5level){magenta}%clr(%-40.40logger{40}){cyan} %L %clr(:){faint}- %msg%n
+            <pattern>%clr(%d{HH:mm:ss.SSS}){faint} %clr([%thread]){faint} %clr(%-5level){magenta}%clr(%-40.40logger{40}){cyan} %L %clr(:){faint}- %msg%n
             </pattern>
         </layout>
     </appender>
