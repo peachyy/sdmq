@@ -1,3 +1,7 @@
+notifications:
+  email:
+    recipients:
+      - hixstao@gmail.com
 language: java
 
 jdk:
