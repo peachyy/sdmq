@@ -1,0 +1,14 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+cache:
+  directories:
+    - $HOME/.m2
+
+before_install:
+  - echo "MAVEN_OPTS='-Dlicense.skip=true -Dmaven.test.skip=true'" > ~/.mavenrc
+
+script:
+  - mvn -B clean install
