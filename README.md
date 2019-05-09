@@ -1,4 +1,4 @@
-# sdmq
+# sdmq [![Build Status](https://api.travis-ci.org/peachyy/sdmq.svg?branch=master)](https://travis-ci.org/peachyy/sdmq)
 is a simple delay message queue， based on redis and kotlin 
 
 设计 <a href="https://www.cnblogs.com/peachyy/p/7398430.html" target="_blank">https://www.cnblogs.com/peachyy/p/7398430.html</a>
