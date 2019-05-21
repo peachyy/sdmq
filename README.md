@@ -1,4 +1,4 @@
-# sdmq [![Build Status](https://api.travis-ci.org/peachyy/sdmq.svg?branch=master)](https://travis-ci.org/peachyy/sdmq)[![Coverage Status](https://coveralls.io/repos/github/peachyy/sdmq/badge.svg?branch=master)](https://coveralls.io/github/peachyy/sdmq?branch=master)
+# sdmq [![Build Status](https://api.travis-ci.org/peachyy/sdmq.svg?branch=master)](https://travis-ci.org/peachyy/sdmq) [![Coverage Status](https://coveralls.io/repos/github/peachyy/sdmq/badge.svg?branch=master)](https://coveralls.io/github/peachyy/sdmq?branch=master) [![Gitter](https://badges.gitter.im/peachyy/sdmq.svg)](https://gitter.im/peachyy/sdmq?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 is a simple delay message queue， based on redis and kotlin 
 
 设计 <a href="https://www.cnblogs.com/peachyy/p/7398430.html" target="_blank">https://www.cnblogs.com/peachyy/p/7398430.html</a>
