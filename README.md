@@ -25,7 +25,7 @@ is a simple delay message queue， based on redis and kotlin
 * id                   任务ID 系统自动生成 任务创建成功返回
 * status               状态 默认不填写  
 * topic                标题
-* subtopic             保留字段 
+* tag                  保留字段 
 * ttl                  保留字段
 * createTime           创建任务时间 非必填 系统默认
 
@@ -87,7 +87,7 @@ is a simple delay message queue， based on redis and kotlin
 sdmq        | rocketMQ | 备注|
 ---               | ---      |---          
 topic    | topic    |     |         
-subtopic | subtopic |      |    
+subtopic | tag |      |    
 body    | 消息内容   |   消息内容   |    
          
 
