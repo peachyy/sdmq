@@ -21,10 +21,10 @@ spring:
     name: 'sdmq'
     version: '1.0'
   datasource:
-    url: jdbc:mysql://rm-wz9u6s944f3p2am001o.mysql.rds.aliyuncs.com/changan_cos2?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/sdmq?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
     driverClassName: com.mysql.jdbc.Driver
-    username: changan_cos1
-    password: chan#gan_cos1_Online
+    username: sdmq
+    password: sdmq
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat
     maxActive: 30
