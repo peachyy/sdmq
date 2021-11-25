@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    appname: sdmq
+  name: sdmq
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      appname: sdmq
+  template:
+    metadata:
+      labels:
+        appname: sdmq
+    spec:
+#      imagePullSecrets:
+#        - name: vps-docker-registry
+      containers:
+        - image: sdmq:latest
+          env:
+            - name: aliyun_logs_api
+              value: /var/logs/sdmq/*.log
+            - name: aliyun_logs_sdmq_logstore
+              value: sdmq-log
+            - name: aliyun_logs_tag_tags
+              value: tag=sdmq
+            - name: aliyun_logs_sdmq_ttl
+              value: "365"
+          volumeMounts:
+            - name: log-volumn
+              mountPath: /var/logs/sdmq
+          name: sdmq
+          ports:
+            - containerPort: 6355
+          resources:
+            limits:
+              cpu: "1"
+              memory: 2048Mi
+            requests:
+              cpu: "1"
+              memory: 2048Mi
+
+      volumes:
+        - name: log-volumn
+          emptyDir: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sdmq-service
+  namespace: default
+spec:
+  selector:
+    appname: sdmq
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 7653
+      targetPort: 7653
