@@ -19,7 +19,7 @@
         <java.version>1.7</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <guava.version>24.1.1-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <commons.fileupload.version>1.3.1</commons.fileupload.version>
         <fastjson.version>1.2.31</fastjson.version>
         <curator.version>2.10.0</curator.version>
