@@ -31,6 +31,6 @@ public interface Job {
 
 
     String getSubtopic();
-
+    String getExtendData();
 
 }

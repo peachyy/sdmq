@@ -2,16 +2,22 @@ package io.sdmq.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Xs.Tao on 2017/7/18.
  */
 public class FastJsonConvert {
-
+    private final static Logger LOGGER = LoggerFactory
+            .getLogger(FastJsonConvert.class);
 
     private static final SerializerFeature[] featuresWithNullValue = {SerializerFeature.WriteMapNullValue,
             SerializerFeature.WriteNullBooleanAsFalse,
@@ -155,6 +161,21 @@ public class FastJsonConvert {
             return text;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
+        }
+    }
+    public static <V> Map<String, V> convertJSONMap(String data) {
+        return convertJSONTypeReference(data,
+                new TypeReference<Map<String, V>>() {
+                });
+    }
+    public static <T> T convertJSONTypeReference(String data,
+                                                 TypeReference<T> typeReference) {
+        try {
+            T listMap = JSON.parseObject(data, typeReference);
+            return listMap;
+        } catch (Exception e) {
+            LOGGER.error("转换JSON失败 异常消息{} \n原文为:{}", e.getMessage(), data);
             return null;
         }
     }
