@@ -99,7 +99,7 @@ public class MessageProducer implements Closeable {
             public void onFailure(Throwable throwable) {
                 LOGGER.error(throwable.getMessage());
             }
-        });
+        },guavaExecutor);
     }
 
     public String getNamesrvAddr() {
