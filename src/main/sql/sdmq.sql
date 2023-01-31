@@ -30,6 +30,7 @@ CREATE TABLE `t_delay_queue_job` (
   `status` int(11) DEFAULT NULL,
   `ttl` int(11) DEFAULT NULL,
   `update_time` datetime(3) DEFAULT NULL,
+  `extend_data` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `T_DELAY_QUEUE_JOB_ID_STATUS` (`id`,`status`),
   KEY `T_DELAY_QUEUE_JOB_STATUS` (`status`)

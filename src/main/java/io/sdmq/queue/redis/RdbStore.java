@@ -35,8 +35,8 @@ public class RdbStore {
     public boolean insertJob(JobMsg jobMsg) {
         boolean result = false;
         String sql = "INSERT INTO `" + TABLE_NAME + "` (`id`, `topic`, `subtopic`, `delay`, `create_time`, `body`, " +
-                "`status`, `ttl`, `update_time`,`bizKey`) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
+                "`status`, `ttl`, `update_time`,`bizKey`,`extend_data`) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);";
         try (
                 Connection conn = dataSource.getConnection();
                 PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
@@ -50,6 +50,7 @@ public class RdbStore {
             preparedStatement.setLong(8, jobMsg.getTtl());
             preparedStatement.setObject(9, new Date());
             preparedStatement.setString(10, jobMsg.getBizKey());
+            preparedStatement.setString(11, jobMsg.getExtendData());
             preparedStatement.execute();
             insertLogJob(jobMsg, conn);
             result = true;
@@ -121,7 +122,7 @@ public class RdbStore {
     }
 
     public JobMsg getJobMyId(String jobId) {
-        String sql = "SELECT  `id`,`topic`,`subtopic`,`delay`,`create_time`,`body`,`status`,`ttl`,`bizkey` FROM `" +
+        String sql = "SELECT  `id`,`topic`,`subtopic`,`delay`,`create_time`,`body`,`status`,`ttl`,`bizkey`,`extend_data` FROM `" +
                 TABLE_NAME + "`  " +
                 "where `id` = ?";
         List<JobMsg> msgList = Lists.newArrayList();
@@ -140,6 +141,7 @@ public class RdbStore {
                 String body       = rs.getString("body");
                 int    status     = rs.getInt("status");
                 long   ttl        = rs.getLong("ttl");
+                String extend_data      = rs.getString("extend_data");
                 JobMsg msg        = new JobMsg();
                 msg.setStatus(status);
                 msg.setTtl(ttl);
@@ -150,6 +152,7 @@ public class RdbStore {
                 msg.setSubtopic(subtopic);
                 msg.setDelay(delay);
                 msg.setId(id);
+                msg.setExtendData(extend_data);
                 return msg;
             }
         } catch (final SQLException ex) {
@@ -159,7 +162,7 @@ public class RdbStore {
     }
 
     public List<JobMsg> getNotFinshDataList(int start, int size) {
-        String sql = "SELECT  `id`,`topic`,`subtopic`,`delay`,`create_time`,`body`,`status`,`ttl`,`bizkey` FROM `" +
+        String sql = "SELECT  `id`,`topic`,`subtopic`,`delay`,`create_time`,`body`,`status`,`ttl`,`bizkey`,`extend_data` FROM `" +
                 TABLE_NAME + "`  " +
                 "where `status` <> 3 and `status` <> 4 order by create_time ,delay limit ?, ?";
         List<JobMsg> msgList = Lists.newArrayList();
@@ -179,6 +182,7 @@ public class RdbStore {
                 String body       = rs.getString("body");
                 int    status     = rs.getInt("status");
                 long   ttl        = rs.getLong("ttl");
+                String extend_data      = rs.getString("extend_data");
                 JobMsg msg        = new JobMsg();
                 msg.setStatus(status);
                 msg.setTtl(ttl);
@@ -189,6 +193,7 @@ public class RdbStore {
                 msg.setSubtopic(subtopic);
                 msg.setDelay(delay);
                 msg.setId(id);
+                msg.setExtendData(extend_data);
                 msgList.add(msg);
             }
         } catch (final SQLException ex) {

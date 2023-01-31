@@ -19,9 +19,22 @@ public class JobMsg implements java.io.Serializable, Job {
     private long   ttl;
     /***预留字段**/
     private String body;
+    /**
+     * 扩展字段
+     */
+    private String extendData;
     private long   createTime = System.currentTimeMillis();
     private int    status     = Status.WaitPut.ordinal();
 
+    @Override
+    public String getExtendData() {
+        return extendData;
+    }
+
+    public void setExtendData(String extendData) {
+        this.extendData = extendData;
+    }
+    @Override
     public String getBizKey() {
         return bizKey;
     }
@@ -29,7 +42,7 @@ public class JobMsg implements java.io.Serializable, Job {
     public void setBizKey(String bizKey) {
         this.bizKey = bizKey;
     }
-
+    @Override
     public String getTopic() {
 
         return topic;
@@ -38,7 +51,7 @@ public class JobMsg implements java.io.Serializable, Job {
     public void setTopic(String topic) {
         this.topic = topic;
     }
-
+    @Override
     public String getId() {
         return id;
     }
@@ -46,7 +59,7 @@ public class JobMsg implements java.io.Serializable, Job {
     public void setId(String id) {
         this.id = id;
     }
-
+    @Override
     public long getDelay() {
         return delay;
     }
@@ -54,7 +67,7 @@ public class JobMsg implements java.io.Serializable, Job {
     public void setDelay(long delay) {
         this.delay = delay;
     }
-
+    @Override
     public long getTtl() {
         return ttl;
     }
@@ -62,7 +75,7 @@ public class JobMsg implements java.io.Serializable, Job {
     public void setTtl(long ttl) {
         this.ttl = ttl;
     }
-
+    @Override
     public String getBody() {
         return body;
     }
@@ -70,7 +83,7 @@ public class JobMsg implements java.io.Serializable, Job {
     public void setBody(String body) {
         this.body = body;
     }
-
+    @Override
     public long getCreateTime() {
         return createTime;
     }
@@ -78,7 +91,7 @@ public class JobMsg implements java.io.Serializable, Job {
     public void setCreateTime(long createTime) {
         this.createTime = createTime;
     }
-
+    @Override
     public int getStatus() {
         return status;
     }
@@ -86,7 +99,7 @@ public class JobMsg implements java.io.Serializable, Job {
     public void setStatus(int status) {
         this.status = status;
     }
-
+    @Override
     public String getSubtopic() {
         return subtopic;
     }

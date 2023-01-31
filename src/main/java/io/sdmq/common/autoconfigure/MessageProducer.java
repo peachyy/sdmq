@@ -16,12 +16,15 @@ import com.alibaba.rocketmq.remoting.exception.RemotingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.Serializable;
 import java.nio.charset.Charset;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -29,6 +32,7 @@ import java.util.concurrent.Executors;
 import io.sdmq.queue.JobMsg;
 import io.sdmq.queue.core.Job;
 import io.sdmq.queue.redis.RedisQueueImpl;
+import io.sdmq.util.FastJsonConvert;
 
 
 public class MessageProducer implements Closeable {
@@ -37,6 +41,7 @@ public class MessageProducer implements Closeable {
     public static final ExecutorService   EXECUTORS = Executors.newFixedThreadPool(2);
     private static      DefaultMQProducer PRODUCER;
     private             String            namesrvAddr;
+    private String groupName;
 
     /**
      * @return
@@ -54,6 +59,14 @@ public class MessageProducer implements Closeable {
             message.setBody(((String) data).getBytes(Charset.forName("UTF-8")));
         } else {
             message.setBody("".getBytes(Charset.forName("UTF-8")));
+        }
+        if(!StringUtils.isEmpty(msg.getExtendData())){
+            Map<String, Object> map = FastJsonConvert.convertJSONMap(msg.getExtendData());
+            if(!CollectionUtils.isEmpty(map)){
+                for(Map.Entry<String,Object> entry:map.entrySet()){
+                    message.putUserProperty(entry.getKey(),Objects.toString(entry.getValue()));
+                }
+            }
         }
 
         try {
@@ -97,9 +110,13 @@ public class MessageProducer implements Closeable {
         this.namesrvAddr = namesrvAddr;
     }
 
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
     protected void init() {
         if (PRODUCER == null) {
-            PRODUCER = new DefaultMQProducer("Producer");
+            PRODUCER = new DefaultMQProducer(Objects.toString(groupName,"Producer"));
             PRODUCER.setNamesrvAddr(namesrvAddr);
             try {
                 PRODUCER.start();
